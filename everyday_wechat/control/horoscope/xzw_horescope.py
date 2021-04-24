@@ -36,6 +36,7 @@ def get_xzw_horoscope(name, is_tomorrow=False):
     :param name: 星座名称
     :return:
     '''
+    print('获取 {} 的运势...'.format(name))
     if not name in CONSTELLATION_DICT:
         print('星座输入有误')
         return
@@ -54,7 +55,7 @@ def get_xzw_horoscope(name, is_tomorrow=False):
             if is_tomorrow:
                 detail_horoscope = detail_horoscope.replace('今天', '明天')
 
-            return_text = '{name}{_date}运势\n【幸运颜色】{color}\n【幸运数字】{num}\n【综合运势】{horoscope}'.format(
+            return_text = '{name}{_date}运势  \n【幸运颜色】{color}  \n【幸运数字】{num}  \n【综合运势】{horoscope}'.format(
                 _date='明日' if is_tomorrow else '今日',
                 name=name,
                 color=lucky_color,

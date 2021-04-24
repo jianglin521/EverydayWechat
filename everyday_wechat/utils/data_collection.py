@@ -7,8 +7,8 @@ import re
 from datetime import datetime
 from datetime import timedelta
 
-# from everyday_wechat.control.weather.rtweather import get_today_weather
-from everyday_wechat.control.weather.sojson import get_sojson_weather
+from everyday_wechat.control.weather.rtweather import get_today_weather
+# from everyday_wechat.control.weather.sojson import get_sojson_weather
 from everyday_wechat.utils.common import (
     get_constellation_name,
 )
@@ -43,7 +43,9 @@ def get_dictum_info(channel):
     if not channel:
         return None
     source = DICTUM_NAME_DICT.get(channel, '')
+    # print(source, 'source')
     if source:
+        # addon = importlib.import_module('.control.onewords.' + source, package='everyday_wechat')
         addon = importlib.import_module('everyday_wechat.control.onewords.' + source, __package__)
         dictum = addon.get_one_words()
         # print(dictum)
@@ -51,7 +53,7 @@ def get_dictum_info(channel):
     return None
 
 
-def get_weather_info(cityname, is_tomorrow=False):
+def get_weather_info(cityname, app_token, is_tomorrow=False):
     """
     获取天气
     :param cityname:str,城市名称
@@ -59,8 +61,8 @@ def get_weather_info(cityname, is_tomorrow=False):
     """
     if not cityname:
         return
-    # return get_today_weather(cityname)
-    return get_sojson_weather(cityname, is_tomorrow)
+    return get_today_weather(cityname, app_token)
+    # return get_sojson_weather(cityname, is_tomorrow)
 
 
 def get_bot_info(message, userId=''):
@@ -124,7 +126,7 @@ def get_constellation_info(birthday_str, is_tomorrow=False):
     return get_today_horoscope(const_name, is_tomorrow)
 
 
-def get_calendar_info(calendar=True, is_tomorrow=False, _date=''):
+def get_calendar_info(calendar=True, app_token = {}, is_tomorrow=False, _date=''):
     """ 获取万年历 """
     if not calendar:
         return None
@@ -132,7 +134,7 @@ def get_calendar_info(calendar=True, is_tomorrow=False, _date=''):
         date = datetime.now().strftime('%Y%m%d')
     else:
         date = (datetime.now() + timedelta(days=1)).strftime('%Y%m%d')
-    return get_rtcalendar(date)
+    return get_rtcalendar(date, app_token)
 
     # else:
     #     time_now = datetime.now()

@@ -5,3 +5,4 @@ apscheduler
 pymongo
 pyyaml
 lxml
+pyperclip

@@ -26,19 +26,20 @@ STFT = (
 WEEK_DICT = {1: '星期一', 2: '星期二', 3: '星期三', 4: '星期四', 5: '星期五', 6: '星期六', 7: '星期日'}
 
 
-def get_rtcalendar(date=''):
+def get_rtcalendar(date, app_token):
     """
     获取指定日期的节假日及万年历信息
      https://github.com/MZCretin/RollToolsApi#指定日期的节假日及万年历信息
     :param data: str 日期 格式 yyyyMMdd
     :rtype str
     """
+    # print(app_token, 'app_token')
 
     date_ = date or datetime.now().strftime('%Y%m%d')
 
     print('获取 {} 的日历...'.format(date_))
     try:
-        resp = requests.get('https://www.mxnzp.com/api/holiday/single/{}'.format(date_))
+        resp = requests.get('https://www.mxnzp.com/api/holiday/single/{}?app_id={}&app_secret={}'.format(date_, app_token['app_id'], app_token['app_secret']))
         if resp.status_code == 200:
             # print(resp.text)
             content_dict = resp.json()

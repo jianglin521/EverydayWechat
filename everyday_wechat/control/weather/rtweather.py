@@ -12,7 +12,7 @@ __all__ = ['get_rttodayweather']
 # "cityCode":"450324","temp":"26℃","weather":"晴","windDirection":"东北","windPower":"≤3级",
 # "humidity":"58%","reportTime":"2019-06-14 10:49:37"}}
 
-def get_rttodayweather(cityname):
+def get_rttodayweather(cityname, app_token):
     """
     获取特定城市今日天气
      https://github.com/MZCretin/RollToolsApi#获取特定城市今日天气
@@ -21,22 +21,20 @@ def get_rttodayweather(cityname):
     """
     print('获取 {} 的天气...'.format(cityname))
     try:
-        # forecast
-        resp = requests.get('https://www.mxnzp.com/api/weather/forecast/{}'.format(cityname))
-        print(resp.text)
+        resp = requests.get('https://www.mxnzp.com/api/weather/forecast/{}?app_id={}&app_secret={}'.format(cityname, app_token['app_id'], app_token['app_secret']))
         if resp.status_code == 200:
             content_dict = resp.json()
             if content_dict['code'] == 1:
                 data_dict = content_dict['data']
+                # print(data_dict, 'data_dict')
                 address = data_dict['address'].strip()
+                forecast = data_dict['forecasts'][0]
 
-                report_time = data_dict['reportTime'].strip()
-                report_time = report_time.split(' ')[0]
-                return_text = ' '.join(
-                    x for x in [
-                        report_time, address, data_dict['weather'], data_dict['temp'],
-                        data_dict['windDirection'] + '风', data_dict['windPower'],
-                        '湿度：' + data_dict['humidity']] if x)
+                list_data = []
+                for x in [address, forecast['date'], forecast['dayWeather'], forecast['dayTemp']]:
+                    list_data.append(x)
+
+                return_text = ' '.join(list_data)
                 # print(return_text)
                 return return_text
             else:
@@ -54,5 +52,4 @@ get_today_weather = get_rttodayweather
 if __name__ == '__main__':
     cityname = '香港'
     weather = get_today_weather(cityname)
-    # print(weather)
     pass

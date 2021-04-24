@@ -2,3 +2,6 @@
 __pycache__
 itchat.pkl
 QR.png
+build
+dist
+__pycache__
