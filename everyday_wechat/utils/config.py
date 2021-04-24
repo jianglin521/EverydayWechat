@@ -27,9 +27,9 @@ def get_yaml():
     解析 yaml
     :return: s  字典
     """
-    # path = frozen_dir.app_path('_config.yaml')
+    path = frozen_dir.app_path('_config.yaml')
     # path = r'D:\WebstormProjects\untitled4\EverydayWechat\everyday_wechat\_config.yaml'
-    path = r'D:\WebstormProjects\untitled13\EverydayWechat\everyday_wechat\_config.yaml'
+    # path = r'D:\WebstormProjects\untitled13\EverydayWechat\everyday_wechat\_config.yaml'
 
     try:
 
