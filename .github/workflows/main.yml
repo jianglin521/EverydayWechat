@@ -23,5 +23,5 @@ jobs:
       run: pip install -r requirements.txt  
     - name: 'Run'
       env:
-        HOSTLOC_USERNAME: ${{ secrets.HOSTLOC_USERNAME }}
+        SEND_KEY: ${{ secrets.SEND_KEY }}
       run: python main.py

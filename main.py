@@ -44,7 +44,7 @@ def send_alarm_msg():
         'title': '每日一句',
         'desp': send_msg
     }
-    resp = requests.post('https://sctapi.ftqq.com/SCT8123T5z4jvG3LpM6ovMWPuhcqzJua.send', form)
+    resp = requests.post('https://sctapi.ftqq.com/{}.send'.format( process.env.SEND_KEY), form)
     if resp.status_code == 200:
         print('发送成功！')
 
