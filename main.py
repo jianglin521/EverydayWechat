@@ -37,7 +37,7 @@ def send_alarm_msg():
             
     send_msg = '  \n'.join(list_data) # 必须添加两个空格加换行
     print('\n' + send_msg + '\n')
-    pyperclip.copy(send_msg)
+    # pyperclip.copy(send_msg)
     with open('./result.txt', 'w', encoding='utf-8') as f:
         f.write(send_msg)
     form = {
