@@ -46,6 +46,7 @@ def send_alarm_msg():
     }
     send_key = os.environ.get('SEND_KEY')
     resp = requests.post('https://sctapi.ftqq.com/{}.send'.format(send_key), form)
+    print(send_key, resp.status_code)
     if resp.status_code == 200:
         print('发送成功！')
 
