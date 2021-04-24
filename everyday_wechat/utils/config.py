@@ -30,7 +30,7 @@ def get_yaml():
     # path = frozen_dir.app_path('_config.yaml')
     # path = r'D:\WebstormProjects\untitled4\EverydayWechat\everyday_wechat\_config.yaml'
     #path = r'D:\WebstormProjects\untitled13\EverydayWechat\everyday_wechat\_config.yaml'
-    path = r'.\everyday_wechat\_config.yaml'
+    path = './everyday_wechat/_config.yaml'
 
     try:
 
