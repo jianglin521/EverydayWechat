@@ -6,7 +6,7 @@
 import os
 import copy as mycopy
 import yaml
-# from everyday_wechat.utils import frozen_dir
+from everyday_wechat.utils import frozen_dir
 
 __all__ = ['set', 'get', 'copy', 'update', '_print']
 
