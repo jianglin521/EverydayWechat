@@ -1,4 +1,4 @@
-name: '每日一句0'
+name: '每日一句'
 
 on:
   push:
