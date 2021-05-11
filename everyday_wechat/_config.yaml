@@ -81,9 +81,9 @@ alarm_info:
         - "22:51"
       is_tomorrow: False  # 是否发送明日信息（如天气，星座，万年历）
       #女友所在城市，用于发送天气。（可空）
-      city_name: '北京'
+      city_name: '呼和浩特'
       # 此城市的 pm2.5 值。
-      air_quality_city: '北京'
+      air_quality_city: '呼和浩特'
       # 格言渠道（1 : ONE●一个，2 : 词霸（每日英语，双语）3: 土味情话 4 : 一言，5：笑话，6 民国情书,7彩虹屁)(可空)
       dictum_channel: 7
       # 从哪天开始勾搭的（可空），配合 start_date_msg 使用。
